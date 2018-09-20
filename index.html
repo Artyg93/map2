@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lab 2</title>
+
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+        integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+        crossorigin=""/>
+
+        <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+        integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+        crossorigin=""></script>
+
+    </head>
+
+    <body>
+        <div id="map" style="height: 500px"></div>
+
+        <script type="text/javascript">
+
+          var map = L.map('map', {
+              center: [33.7639047,-93.2907827],
+              zoom: 5
+          });
+
+          L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+              attribution: '@ <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+              maxZoom: 4,
+              minZoom: 4
+           }).addTo(map);
+
+          var airplaneIcon = L.icon({
+              iconUrl: 'airplane.png', // url that links to the icon image file
+              iconSize:     [38,38], // size of the icon image in pixels
+              iconAnchor:   [19, 19], // the top left corner of the icon will be aligned so that this point is at the marker's geographical location
+              popupAnchor:  [0, -10] // point from which the popup should open, relative to the iconAnchor
+          });
+
+          var marker1 = L.marker([34.0207305,-118.6919152], {icon: airplaneIcon}).addTo(map);
+          var marker2 = L.marker([19.7037327,-101.2411434], {icon: airplaneIcon}).addTo(map);
+          var marker3 = L.marker([16.0985874,-88.8153004], {icon: airplaneIcon}).addTo(map);
+
+          var pic1 = '<img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/LosAngeles05.jpg" alt="Los Angeles" width="250">';
+          var pic2 = '<img src="https://upload.wikimedia.org/wikipedia/commons/d/d1/Calle_del_centro_de_morelia.jpg" alt="Morelia" width="250">';
+          var pic3 = '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Punta_Gorda_BZ_square.JPG/1280px-Punta_Gorda_BZ_square.JPG" alt="Punta Gorda" width="250">';
+
+          marker1.bindPopup('<p style="color:blue; font-weight:bold"> Los Angeles </p>' + pic1);
+          marker2.bindPopup('<p style="color:green; font-weight:bold"> Morelia</p>' + pic2);
+          marker3.bindPopup('<p style="color:orange; font-weight:bold"> Punta Gorda</p>' + pic3);
+
+        </script>
+   </body>
+</html>
